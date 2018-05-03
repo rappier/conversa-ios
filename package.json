@@ -1,0 +1,35 @@
+{
+  "name": "cordova-plugin-unliche",
+  "version": "0.0.1",
+  "description": "This Cordova plugin allows you to measure installs and events with the Unliche SDK.",
+  "cordova": {
+    "id": "cordova-plugin-unliche",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dayanand-pers/toastyplugin.git"
+  },
+  "keywords": [
+    "Toast",
+    "Notification",
+    "Message",
+    "Alert",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Dayanand <dayanand.lande@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dayanand-pers/toastyplugin/issues"
+  },
+  "homepage": "https://github.com/dayanand-pers/toastyplugin/"
+}

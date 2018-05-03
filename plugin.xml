@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-unliche" version="1.0.1">
+    <name>UnlichePlugin</name>
+
+    <description>This Cordova plugin allows you to measure installs and events with the Unliche SDK.</description>
+    <license>MIT</license>
+
+    <keywords>cordova,android,toast,message,alert</keywords>
+    <repo>https://github.com/stanidesis/toastyplugin/Toast-PhoneGap-Plugin.git</repo>
+    <issue>https://github.com/stanidesis/toastyplugin/issues</issue>
+  
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+  
+    <js-module src="www/unlicheplugin.js" name="UnlichePlugin">
+        <clobbers target="window.plugins.unlichePlugin" />
+    </js-module>
+    <platform name="android">
+	
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="UnlichePlugin">
+                <param name="android-package" value="com.rappier.cordova.plugin.UnlichePlugin"/>
+            </feature>
+        </config-file>
+
+	 <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+            <uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+            <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+		<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+        </config-file>
+
+	<config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver android:name="com.rappier.unlichesdk.unlichelib.mainsdkclasses.TrackerEventReceiver" android:exported="true">
+		    <intent-filter>
+		        <action android:name="com.android.vending.INSTALL_REFERRER" />
+		    </intent-filter>
+		</receiver>
+            
+        </config-file>
+
+
+        <source-file src="src/android/UnlichePlugin.java" target-dir="src/com/rappier/cordova/plugin" />
+
+	<framework src="com.rappier.unlichesdk:unlicheSDK:1.2.4@aar" />
+        <framework src="com.google.android.gms:play-services-gcm:12.0.1" />
+	<framework src="com.android.installreferrer:installreferrer:1.0"/>
+    </platform>
+</plugin>
